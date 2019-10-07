@@ -1,6 +1,6 @@
 const unit = JSON.parse( require( 'fs' ).readFileSync( './unit.json', 'utf-8' ) );
 const idol = JSON.parse( require( 'fs' ).readFileSync( './idol.json', 'utf-8' ) );
-const hand = ['矢吹可奈', '春日未来', '高坂海美', '北上麗花', '伊吹翼'];
+const hand = ['矢吹可奈', '箱崎星梨花', '高坂海美', '北上麗花', '北沢志保'];
 
 unit.sort( ( a, b ) => b.Member.length - a.Member.length );
 
@@ -76,5 +76,28 @@ for( var i of res ){
 		final = [i, tmp];
 	}
 }
-console.log( score );
-console.log( final );
+console.log( `score: ${ score }` );
+console.log( `result:\n\t${ final.map( v => v.toString() != [].toString() ? `${ v.Song }: [ ${ v.Member } ]` : '' ).join( '\n\t' ) }` );
+switch( score ){
+	case 0:
+		console.log( 'No Pair' );
+	break;
+	case 100:
+		console.log( 'One Pair' );
+	break;
+	case 200:
+		console.log( 'Two Pair' );
+	break;
+	case 300:
+		console.log( 'Three Cards' );
+	break;
+	case 400:
+		console.log( 'Full House' );
+	break;
+	case 500:
+		console.log( 'Four Cards' );
+	break;
+	case 1000:
+		console.log( 'Five Cards!' );
+	break;
+}
